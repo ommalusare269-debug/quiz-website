@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Result</h1>
+        <div id="score"></div>
+        <div id="details"></div>
+        <button onclick="retryQuiz()">Retry Quiz</button>
+    </div>
+
+    <script>
+        const userAnswers = JSON.parse(localStorage.getItem('userAnswers'));
+        const questions = JSON.parse(localStorage.getItem('questions'));
+        let score = 0;
+        const detailsDiv = document.getElementById('details');
+
+        questions.forEach((q, index) => {
+            const userAnswer = userAnswers[index];
+            const correct = userAnswer === q.correct ? '✅' : '❌';
+            if(userAnswer === q.correct) score++;
+            detailsDiv.innerHTML += `<p>${correct} Q${index+1}: ${q.question} <br>
+            Your Answer: ${userAnswer} | Correct Answer: ${q.correct}</p>`;
+        });
+
+        document.getElementById('score').innerHTML = `Score: ${score} / ${questions.length}`;
+
+        function retryQuiz() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Quiz</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Language Quiz</h1>
+        <p>Select a level to start:</p>
+        <div class="levels">
+            <button onclick="startQuiz('easy')">Easy</button>
+            <button onclick="startQuiz('medium')">Medium</button>
+            <button onclick="startQuiz('hard')">Hard</button>
+        </div>
+    </div>
+
+    <script>
+        function startQuiz(level) {
+            localStorage.setItem('quizLevel', level); // Save selected level
+            window.location.href = 'quiz.html';
+        }
+    </script>
+</body>
+</html>
