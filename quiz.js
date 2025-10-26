@@ -115,3 +115,10 @@ document.getElementById('prevBtn').onclick = () => { if(current>0) current--; re
 document.getElementById('submitBtn').onclick = submitQuiz;
 
 renderQuestion();
+// ✅ Confirmation before submitting
+document.getElementById("submit-btn").addEventListener("click", () => {
+  const confirmSubmit = confirm("Are you sure you want to submit the quiz?");
+  if (confirmSubmit) {
+    submitQuiz();
+  }
+});
